@@ -1,0 +1,114 @@
+BODY
+{
+margin: 0;
+padding: 0;
+border-style: none;
+}
+
+DIV.Title
+{
+position:absolute;
+visibility: hidden;
+}
+
+DIV.Desc
+{
+position:absolute;
+display: none;
+}
+
+DIV.Nav
+{
+position:absolute;
+display: none;
+text-align: right;
+}
+
+IMG.Cache
+{
+position: absolute;
+border: 1 solid blue;
+visibility: hidden;
+cursor: hand;
+}
+
+Table.ControlBar TD
+{
+vertical-align: bottom;
+text-align: right;
+}
+
+DIV.Nav Table
+{
+table-layout: fixed;
+}
+
+TD.Thumb
+{
+vertical-align: bottom;
+text-align: right;
+}
+
+IMG.Loaded
+{
+cursor: hand;
+}
+
+IMG.Unloaded
+{
+filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=50);
+cursor: hand;
+}
+
+IMG.UnloadedSelected
+{
+filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=50);
+cursor: hand;
+}
+
+IMG.Error
+{
+filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=20);
+cursor: hand;
+}
+
+IMG.Selected
+{
+}
+
+.TextButton
+{
+cursor: hand;
+}
+
+.ImgButton
+{
+cursor: hand;
+}
+
+.ImgButtonPressed
+{
+cursor: hand;
+}
+
+DIV.Credits
+{
+visibility: hidden;
+position:absolute;
+font-style: italic;
+text-align: right;
+}
+
+DIV.Splash
+{
+position:absolute;
+visibility: hidden;
+text-align: center;
+}
+
+DIV.Debug
+{
+position:absolute;
+border: 1 solid red;
+font-size: 0;
+}

@@ -1,0 +1,370 @@
+<body style="font-family: Verdana; font-size: 10pt">
+
+<h1 align="center">CVS Source Control for the<br>
+Image Gallery Project</h1>
+<p align="center">Mike Koss<br>
+November 17, 2004</p>
+<p>This document describes the steps in configuring CVS to make an enlistment in 
+the Image Gallery project.</p>
+<h2>Overview</h2>
+<p>CVS is a version control system commonly used by open source projects.&nbsp; 
+It is much like SLM or SCM - used at Microsoft.&nbsp; Unlike SLM, a server 
+process runs on the machine holding the <i>repository</i> which ensures the 
+coordination of multiple users when they modify files.&nbsp; CVSNT is a Windows 
+version of the CVS system (including client software and the server system).</p>
+<p>The general process of using CVS is that you'll have a <i>sandbox</i> copy of 
+the project files on your local machine, which you can modify as you like.&nbsp; 
+After testing your changes to the source, you'll be able to <i>commit </i>your 
+changes back to the master <i>repository</i> on the server.&nbsp; At any time, 
+when you are ready to update your copy of the files to the latest version on the 
+server you can <i>update</i> your local copy.</p>
+<p>When two users modify a single file independently, CVS makes a best attempt 
+at merger the changes in those files.&nbsp; The basic unit of comparison is a 
+&quot;line of text&quot;.&nbsp; If all changes are made to distinct lines in the file, CVS 
+will accept automatically the changes from both users.&nbsp; If, however, two 
+users modify the same lines, then CVS inserts text around those changes in your 
+copy of the file that identifies both versions.&nbsp; It is up to you to resolve 
+the changes and restore the file to a workable state before committing your 
+changes back to the server.</p>
+<h2>Step-by-step Installation Instructions</h2>
+<table border="1" style="border-collapse: collapse" width="100%" id="table2">
+	<tr>
+		<td width="229" valign="top"><b><font size="2">Download CVSNT</font></b></td>
+		<td valign="top">
+		<a href="https://secure.march-hare.com/cvspro/default.asp?lang=EN&complete=1">
+		<font size="2">
+		https://secure.march-hare.com/cvspro/default.asp?lang=EN&amp;complete=1</font></a><font size="2">&nbsp; 
+		They ask you to fill in your email address and name - I found I could 
+		use &quot;<a href="mailto:foo@bar.com">foo@bar.com</a>&quot; with name &quot;Foo Bar&quot; 
+		and the download works OK.&nbsp; I also put a copy off the version I'm 
+		using on the teamoffice.org web site:<a href="http://teamoffice.org/mmdev/Tools/cvsnt-2.0.58d.exeT"> 
+		cvsnt-2.0.58d</a> (you'll need to rename the file to a .exe file and 
+		then run it).</font></td>
+	</tr>
+	<tr>
+		<td width="229" valign="top"><b><font size="2">Run Install</font></b></td>
+		<td valign="top"><font size="2">If you're just using the client - you 
+		can uncheck the &quot;Server Components&quot; part of the install.&nbsp; I'd just 
+		accept the defaults on the rest of the install.</font><p><font size="2">
+		<img border="0" src="cvs-setup.jpg" width="501" height="390"></font></td>
+	</tr>
+	<tr>
+		<td width="229" valign="top"><b><font size="2">Configure Environment</font></b></td>
+		<td valign="top"><font size="2">You'll be running CVS commands from a 
+		command line interface.&nbsp; There are a couple of environment 
+		variables you'll need to set up.&nbsp; I created a batch file (cvsstart.cmd) 
+		with the following commands so I can open up a command shell and 
+		initialize CVS for this project:</font><blockquote>
+			<p><font size="2">path=%path%;c:\program files\cvsnt<br>
+			set cvsroot=:pserver:mjennings@coderats.com:/CVS</font></p>
+		</blockquote>
+		</td>
+	</tr>
+	<tr>
+		<td width="229" valign="top"><b><font size="2">Login to CVS Server</font></b></td>
+		<td valign="top"><font size="2">The first step to any CVS session is to 
+		log in.&nbsp; In the command window type:</font><blockquote>
+			<p><font size="2">cvs login</font></p>
+		</blockquote>
+		<p><font size="2">Since your user name is set above (as mjennings), cvs 
+		will prompt you for the password.</font></td>
+	</tr>
+	<tr>
+		<td width="229" valign="top"><b><font size="2">Test connection</font></b></td>
+		<td valign="top"><font size="2">In order to test your connection, try to 
+		list the projects stored on the server:</font><blockquote>
+			<p><font size="2">cvs ls</font></p>
+		</blockquote>
+		<p><font size="2">The response should be something like:</font></p>
+		<blockquote>
+			<p><font face="Courier New" size="2">Listing modules on server<br>
+			<br>
+			CVSROOT<br>
+			ImageGallery<br>
+			test</font></p>
+		</blockquote>
+		</td>
+	</tr>
+	<tr>
+		<td width="229" valign="top"><b><font size="2">Make sandbox</font></b></td>
+		<td valign="top"><font size="2">You copy of the files from the server is 
+		called a <i>sandbox</i>.&nbsp; To create the sandbox for the 
+		ImageGallery project on your machine:</font><blockquote>
+			<p><font size="2">cvs checkout ImageGallery</font></p>
+		</blockquote>
+		<p><font size="2">CVS will create a subdirectory called ImageGallery (in 
+		the current directory) and copy all the files in the project.</font></td>
+	</tr>
+	<tr>
+		<td width="229" valign="top">&nbsp;</td>
+		<td valign="top">&nbsp;</td>
+	</tr>
+</table>
+<h2>Using CVS</h2>
+<table border="1" style="border-collapse: collapse" width="100%" id="table3">
+	<tr>
+		<td width="243" valign="top"><b><font size="2">Modify a file</font></b></td>
+		<td valign="top"><font size="2">Just edit the file copy in your <i>
+		sandbox</i>.&nbsp; Your changes will not be uploaded to the server until 
+		you <i>commit</i>.</font></td>
+	</tr>
+	<tr>
+		<td width="243" valign="top"><b><font size="2">Copy the latest file 
+		version to your machine</font></b></td>
+		<td valign="top">
+		<blockquote>
+			<p align="left"><font size="2">cvs update</font></blockquote>
+		<p align="left">
+		<font size="2">Note that if there are new directories to create, you 
+		need to use:</font><blockquote>
+			<p align="left"><font size="2">cvs update -d</font></blockquote>
+		</td>
+	</tr>
+	<tr>
+		<td width="243" valign="top"><b><font size="2">See what changes you've 
+		made</font></b></td>
+		<td valign="top">
+		<blockquote>
+			<font size="2">cvs diff [filename]</font></blockquote>
+		<p><font size="2">If you want to see the context of lines around each 
+		diff, use</font></p>
+		<blockquote>
+			<p><font size="2">cvs diff -c [filename]</font></p>
+		</blockquote>
+		</td>
+	</tr>
+	<tr>
+		<td width="243" valign="top"><b><font size="2">Upload your changes to 
+		the project</font></b></td>
+		<td valign="top"><font size="2">cvs commit</font></td>
+	</tr>
+	<tr>
+		<td width="229" valign="top"><font size="2"><b>Add a new file to the 
+		project</b></font></td>
+		<td valign="top"><font size="2">Create the file in your <i>sandbox</i> 
+		directory and then:</font><blockquote>
+			<p><font size="2">cvs add <i>newfile.ext</i></font></p>
+		</blockquote>
+		</td>
+	</tr>
+	<tr>
+		<td width="229" valign="top"><font size="2"><b>List the status of all 
+		files</b></font></td>
+		<td valign="top">
+		<blockquote>
+			<font size="2">cvs status -q</font></blockquote>
+		<p><font size="2">To just show the files in the current directory (and 
+		not all sub-directories):</font></p>
+		<blockquote>
+			<p><font size="2">cvs status -q -l</font></p>
+		</blockquote>
+		</td>
+	</tr>
+	<tr>
+		<td width="229" valign="top"><font size="2"><b>Remove a Sandbox</b></font></td>
+		<td valign="top"><font size="2">If you want, you can simply delete a 
+		directory that in enlisted in a project.&nbsp; But, if you want to be 
+		sure everything is cleaned up, and the files are no longer marked as 
+		being checked out to you, you can:</font><blockquote>
+			<p><font size="2">cvs release -d</font></p>
+		</blockquote>
+		<p><font size="2">Which will check the state of all our files before 
+		deleting them.</font></td>
+	</tr>
+	<tr>
+		<td width="229" valign="top"><font size="2"><b>List current version of 
+		all files in project</b></font></td>
+		<td valign="top">
+		<blockquote>
+			<font size="2">cvs ls -R -l [project]</font></blockquote>
+		<p><font size="2">e.g.</font></p>
+		<blockquote>
+			<p><font size="2">cvs ls -R -l ImageGallery</font></p>
+		</blockquote>
+		</td>
+	</tr>
+	<tr>
+		<td width="229" valign="top"><b><font size="2">Adding a new project</font></b></td>
+		<td valign="top"><font size="2">I haven't been able to get the <i>import</i> 
+		command working, so I have been using add.&nbsp; The trick to add is 
+		that you have to have the current directory enlisted in the root of the 
+		CVS repository, create a directory in it, and then add it:</font><blockquote>
+			<p><font size="2">mkdir CVSMain<br>
+			cd CVSMain<br>
+			checkout -l .<br>
+			mkdir &lt;Project&gt;<br>
+			cvs add &lt;Project&gt;<br>
+			cvs ls</font></p>
+		</blockquote>
+		<p><font size="2">Verify that the new project is listed.&nbsp; You can 
+		now remove this temporary directory and create it where it is desired:</font></p>
+		<blockquote>
+			<p><font size="2">cvs release -d &lt;Project&gt;<br>
+			cd &lt;parent-directory&gt;<br>
+			cvs checkout &lt;Project&gt;</font></p>
+		</blockquote>
+		</td>
+	</tr>
+	<tr>
+		<td width="229" valign="top">&nbsp;</td>
+		<td valign="top">&nbsp;</td>
+	</tr>
+</table>
+<h2>Project Tagging and Branching</h2>
+<p>When a version of the project is ready to be released, we will tag the files 
+so that future commands can refer to that released project.&nbsp; For example,
+</p>
+<blockquote>
+	<p>cvs tag R-2004-09-17</p>
+</blockquote>
+<p>will mark every file in the current directory (and below) as part of &quot;Release 
+on 9/17/2004&quot; using our standard version naming convention: R-YYYY-MM-DD).</p>
+<p>You can cause CVS to make an independent development track by creating a <i>
+branch</i>.&nbsp; Branches are parallel copies of the files in a project.&nbsp; 
+Once created, you can checkout files in the branch, and commit files back to the 
+branch without affecting the main <i>trunk</i>.&nbsp; We should use branches for 
+any extensive or experimental re-writes.&nbsp; Then, when everything is 
+complete, stable, and tested you can merge the branch back into the main trunk.</p>
+<p>Another good use for branches would be if we release code to a third party, 
+and we need to make a few bug fixes to that release (and we don't want to 
+include other code revision we've done since the release date).</p>
+<p>Some suggested naming conventions for tags (or branches):</p>
+<table border="1" style="border-collapse: collapse" width="100%" id="table5">
+	<tr>
+		<td width="189"><b><font size="2">R-YYYY-MM-DD</font></b></td>
+		<td><font size="2">Released version.</font></td>
+	</tr>
+	<tr>
+		<td width="189"><font size="2"><b>D-Purpose</b></font></td>
+		<td><font size="2">Base code at the start of a side development branch.</font></td>
+	</tr>
+	<tr>
+		<td width="189"><font size="2"><b>B-Purpose</b></font></td>
+		<td><font size="2">Name of the branch - refers to all the revisions in 
+		the branch.</font></td>
+	</tr>
+	<tr>
+		<td width="189"><font size="2"><b>B-Purpose-Merge-N</b></font></td>
+		<td><font size="2">If the main trunk is merged back into a branch, name 
+		the last merge point (in the branch).</font></td>
+	</tr>
+	<tr>
+		<td width="189"><font size="2"><b>D-Purpose-Merge</b></font></td>
+		<td><font size="2">Tag (in the main trunk) after merging and committing 
+		all updates from the side branch project.</font></td>
+	</tr>
+	<tr>
+		<td width="189"><font size="2"><b>B-YYYY-MM-DD</b></font></td>
+		<td><font size="2">Bug fix branch for release YYYY-MM-DD.</font></td>
+	</tr>
+	<tr>
+		<td width="189">&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="189">&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<h3>To create a Branch</h3>
+<table border="1" style="border-collapse: collapse" width="100%" id="table4">
+	<tr>
+		<td width="304" valign="top"><font size="2">cvs tag D-Caching</font></td>
+		<td valign="top"><font size="2">Mark the currently checkout out version 
+		of the sandbox as the &quot;Root&quot; version from which the branch is to be 
+		created.&nbsp; Preferably, this is done before any work is done.&nbsp; 
+		But it can also be done after making code changes in your sandbox as 
+		long as no files have been updated or committed since you started work.</font><p>
+		<font size="2">See suggested naming conventions above.</font></td>
+	</tr>
+	<tr>
+		<td width="304" valign="top"><font size="2">cvs tag -r D-Caching -b 
+		B-Caching</font></td>
+		<td valign="top"><font size="2">Creates a branch called B-Caching, 
+		starting from the tagged revision D-Caching.</font></td>
+	</tr>
+	<tr>
+		<td width="304" valign="top"><font size="2">cvs update -r B-Caching</font></td>
+		<td valign="top"><font size="2">Checks out files in the branch to the 
+		current sandbox.&nbsp; All future updates and commits will go to the 
+		branch.&nbsp; To check the branch that a file/directory is in use:</font><blockquote>
+			<p><font size="2">cvs status -v [filename]</font></p>
+		</blockquote>
+		</td>
+	</tr>
+</table>
+<p>Now all file add's, updates and commits will come from the branch without 
+affecting the main trunk.&nbsp; You can also create a separate sandbox for work 
+on a branch using:</p>
+<blockquote>
+	<p>cvs checkout -r B-Caching -d Caching ImageGallery/Runtime</p>
+</blockquote>
+<p>A local directory named <i>Caching</i> is created with a sandbox for the 
+B-Caching branch of the ImageGallery/Runtime directory.</p>
+<p>To revert a branched directory back to the trunk:</p>
+<blockquote>
+	<p>cvs update -A</p>
+</blockquote>
+<h3>Merging a Branch back into the Trunk</h3>
+<table border="1" style="border-collapse: collapse" width="100%" id="table6">
+	<tr>
+		<td width="303" valign="top"><font size="2">cvs update -A</font></td>
+		<td valign="top"><font size="2">Set your directory to be a trunk 
+		directory (make sure all your files have already been committed to the 
+		branch).&nbsp;&nbsp; Alternately, you can do this from a separate trunk 
+		directory.</font></td>
+	</tr>
+	<tr>
+		<td width="303" valign="top"><font size="2">cvs update -j D-Caching -j 
+		B-Caching</font></td>
+		<td valign="top"><font size="2">You local files now have merged in all 
+		the changes from the branch.</font></td>
+	</tr>
+	<tr>
+		<td width="303" valign="top"><font size="2">cvs commit</font></td>
+		<td valign="top"><font size="2">After testing and verifying all merges, 
+		commit the changes to the trunk.</font></td>
+	</tr>
+	<tr>
+		<td width="303" valign="top"><font size="2">cvs tag D-Caching-Merge</font></td>
+		<td valign="top"><font size="2">Set a tag at the point of successfully 
+		merging the branch back in.&nbsp; Note that branches never die - you can 
+		at any time checkout a branch version of the project even after merging 
+		to the main trunk.</font></td>
+	</tr>
+</table>
+<h2><br>
+Useful Links</h2>
+<table border="1" style="border-collapse: collapse" width="100%" id="table1">
+	<tr>
+		<td width="361" valign="top">
+		<a href="http://www.cvsnt.org/wiki/InstallationTips"><font size="2">
+		http://www.cvsnt.org/wiki/InstallationTips</font></a></td>
+		<td valign="top"><font size="2">This document is the main one I used in 
+		getting installation instructions for CVSNT.&nbsp; Unfortunately, it's a 
+		bit out of date (dialogs are different).</font></td>
+	</tr>
+	<tr>
+		<td width="361" valign="top">
+		<a href="https://www.cvshome.org/docs/manual/cvs-1.11.18/cvs.html">
+		<font size="2">https://www.cvshome.org/docs/manual/cvs-1.11.18/cvs.html</font></a><font size="2">
+		</font>
+		<p><font size="2">PDF:
+		<a href="http://ccvs.cvshome.org/files/documents/19/532/cederqvist-1.11.18.pdf">
+		http://ccvs.cvshome.org/files/documents/19/532/cederqvist-1.11.18.pdf</a>
+		</font></td>
+		<td valign="top"><font size="2">Complete manual for CVS by Per 
+		Cederqvist.</font></td>
+	</tr>
+	<tr>
+		<td width="361" valign="top"><a href="http://www.wincvs.org/">
+		<font size="2">http://www.wincvs.org/</font></a><font size="2"> </font>
+		</td>
+		<td valign="top"><font size="2">A graphical interface to CVS.&nbsp; I've 
+		not tried this as I want to primarily use the command line version.&nbsp; 
+		I'm not sure if this download interferes with the cvsnt download.</font></td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

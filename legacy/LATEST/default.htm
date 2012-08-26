@@ -1,0 +1,140 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SlideShow Sources</title>
+</head>
+
+<body style="font-family: Verdana">
+
+<h1>The Image Gallery Distribution<br>
+Version 2004-05-27</h1>
+<p>The default method of creating a slide show is to simply copy a single HTML 
+file and edit it to reference the images and thumbnails for your show.&nbsp; 
+This default template references the code and application components stored on 
+our server - there is no need for you to copy anything else.&nbsp; Simply 
+right-click on &quot;template.htm&quot; below, and select &quot;Save Target As...&quot; to save a 
+copy on your local machine.</p>
+<table border="1" style="border-collapse: collapse" width="100%" id="table1" bordercolor="#000000">
+	<tr>
+		<td width="149" valign="top"><a href="template.htm">template.htm</a></td>
+		<td>This is a copy of an empty slideshow template.&nbsp; This is the 
+        file into which the XML data island must be placed.&nbsp; You can also 
+        edit our <a href="sample.htm">Sample Show</a> if you prefer not to start 
+        from a &quot;blank slate&quot;.</td>
+	</tr>
+</table>
+
+<hr>
+
+<h1>XML Data Island Documentation</h1>
+
+<p>The XML Data island that drives the slide show has the following format.&nbsp; 
+Note that the values show here are typically the default values of those 
+attributes.&nbsp; Attributes can be omitted from the XML and the default values 
+will be used (newly implemented attributes are highlighted in
+<span style="background-color: #FFFF00">yellow</span>).</p>
+
+<p><font face="Courier New" size="2">&lt;XML id=xmlSlideShow&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;Show<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Width=&quot;640&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Default width and height for all slides in show<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Height=&quot;480&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ImageBase=&quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Default location of image files (optional)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ThumbBase=&quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Default location of thumbnail files<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Margin=&quot;10&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Number of pixels around edge of screen and between<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// thumbnails<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ThumbSize=&quot;40&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Size (in pixels) of thumbnail images (square)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Border=&quot;2&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Size (in pixels) of borders around thumbs and main<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// image<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BorderColor=&quot;white&quot;&nbsp;&nbsp; // 
+Use any IE allowed
+<a href="http://msdn.microsoft.com/library/default.asp?url=/workshop/author/dhtml/reference/dhtml_reference_entry.asp">
+color value</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnselectedColor=&quot;black&quot; // Color of 
+border around &quot;unselected&quot; thumbnail images<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ErrorColor=&quot;red&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Color of border around thumbnails of images that cannot be loaded<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// (typically a missing image).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BackColor=&quot;#3C3C3C&quot;&nbsp;&nbsp; // 
+Background color of page<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TextColor=&quot;white&quot;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Text color<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Font=&quot;Verdana&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Default Font to use on page<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FontSize=&quot;14&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Default font size to use on page<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TitleFont=&quot;&lt;Font&gt;&quot;&nbsp;&nbsp;&nbsp; 
+// Font to use for the Title (default is the same as the &quot;Font&quot; attribute<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TitleFontSize=&quot;&lt;FontSize&gt;+4&quot; // Font 
+size to use for the Title (default is the page &quot;FontSize&quot; plus 4)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SoundTrack=&quot;&lt;URL&gt;&quot;&nbsp;&nbsp;&nbsp; 
+// URL to a standard windows sound format (eg., *.WAV, *.MP3, *.WMV).&nbsp; The<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Windows Media Player must be installed on the user's machine to hear the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// background music track.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Delay=&quot;7&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// The number of seconds to dwell on each image when the user clicks the &quot;Play&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// button in the slideshow.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AutoPlay=&quot;false&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Set to true if you want the slideshow Play to occur immediately on loading.<br>
+&nbsp;&nbsp;&nbsp; &gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;Title&gt;&lt;/TITLE&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// A single line of (HTML) text to display as the show<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// title<br>
+&nbsp;&nbsp;&nbsp; &lt;Home<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HREF=&quot;&lt;URL&gt;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Reference to a home page (link from Home button)<br>
+&nbsp;&nbsp;&nbsp; /&gt;<br>
+</font><font size="2"><br>
+</font>followed by 1 or more &lt;Slide&gt;'s as follows:</p>
+
+<p><font face="Courier New" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;Slide<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Src=&quot;&lt;URL&gt;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Relative URL of image file.&nbsp; So that &quot;foo.jpg&quot; will refer to a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// file in the same directory as this htm file; &quot;pictures/foo.jpg&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// refers to a file in the subdirectory &quot;pictures&quot;.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NoBase=&quot;false&quot;&nbsp;&nbsp;&nbsp; 
+// If true, ignore Show.ImageBase and Show.ThumbBase (relative images will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// be relative to the location of this htm file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thumb=&quot;&lt;URL&gt;&quot;&nbsp;&nbsp;&nbsp;&nbsp; 
+// Numbnail image location - if not given, source.jpg's thumbnail defaults to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// source-T.jpg.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Width=&quot;&lt;Show.Width&gt;&quot; 
+// Width and height of rectangle to display for slide.&nbsp; If not given,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+// the default size given in the &lt;Show WIDTH= HEIGHT=&gt; attributes are used.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Height=&quot;&lt;Show.Height&gt;&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;Title&gt;&lt;/Title&gt;&nbsp;&nbsp;&nbsp;// HTML text to display as the slide title<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Date&gt;&lt;/Date&gt;&nbsp;&nbsp;&nbsp;&nbsp; // Date of image 
+- if omitted, nothing is displayed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Desc&gt;&lt;/Desc&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Multiple lines of (HTML) text to display<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// as the slide description.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/Slide&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;/Show&gt;<br>
+&lt;/XML&gt;<br>
+&nbsp;</font></p>
+
+</body>
+
+</html>

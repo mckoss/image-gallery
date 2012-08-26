@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<SCRIPT SRC="util.js"></SCRIPT>
+<SCRIPT>
+cbUtil.IncludeStyle("slideshow.css");
+cbUtil.IncludeScript("slideshow.js");
+</SCRIPT>
+</HEAD>
+<BODY>
+
+<DIV ID=divSS style="background-color: white;margin:10;width:100%;"></DIV>
+
+<SCRIPT>
+ss = new SlideShow("sample.xml", divSS);
+//ss.fDebug = true;
+ss.WriteUI();
+</SCRIPT>
+</BODY>
+</HTML>

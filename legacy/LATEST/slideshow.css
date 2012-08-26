@@ -1,0 +1,110 @@
+BODY
+{
+margin: 0;
+padding: 0;
+border-style: none;
+filter: progid:DXImageTransform.Microsoft.Fade(overlap=1, duration=1);
+}
+
+DIV.Title
+{
+position:absolute;
+visibility: hidden;
+}
+
+IMG.Main
+{
+position:absolute;
+border:2 solid white;
+display: none;
+}
+
+DIV.Desc
+{
+position:absolute;
+display: none;
+}
+
+DIV.Nav
+{
+position:absolute;
+display: none;
+text-align: right;
+}
+
+Table.ControlBar
+{
+}
+
+Table.ControlBar TD
+{
+vertical-align: bottom;
+text-align: right;
+}
+
+DIV.Nav Table
+{
+xtable-layout: fixed;
+}
+
+TD.Thumb
+{
+vertical-align: bottom;
+text-align: right;
+}
+
+IMG.Loaded
+{
+cursor: pointer;
+}
+
+IMG.Unloaded
+{
+filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=50);
+}
+
+IMG.Error
+{
+filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=20);
+cursor: pointer;
+}
+
+IMG.Selected
+{
+}
+
+.TextButton
+{
+cursor: pointer;
+}
+
+.ImgButton
+{
+cursor: pointer;
+}
+
+.ImgButtonPressed
+{
+cursor: pointer;
+}
+
+DIV.Credits
+{
+font-style: italic;
+display: none;
+position:absolute;
+}
+
+DIV.Splash
+{
+position:absolute;
+visibility: hidden;
+text-align: center;
+}
+
+DIV.Debug
+{
+position:absolute;
+border: 1 solid red;
+font-size: 0;
+}

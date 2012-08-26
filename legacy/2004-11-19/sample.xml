@@ -1,0 +1,68 @@
+<Show  Width="678" Height="452" Delay="7" AutoPlay="true"
+	Upscale="false"
+	NavHigh="false"
+	ImageBase="../SampleSource/"
+	SoundTrack="http://mckoss.com/jscript/slideshow/SampleSource/VH.wma"
+	SoundLoop="false"
+	Transition="Wipe"
+	TextColor="black"
+	ThumbMargin="5"
+	BorderColor="red"
+	>
+	<ImageCredit>Whole Show Credit</ImageCredit>
+	<SoundCredit><A HREF="http://www.amazon.com/exec/obidos/ASIN/B000002TC4/qid=1086843885/">Ventura Highway</A> by America</SoundCredit>
+
+	<Title ShowTitle="true">
+		<A HREF="http://www.whizmoandgizmo.com">Whizmo and Gizmo</A> -
+		<i>JerkQuest '03 Tour</i> - Pictures from Day 1
+	</Title>
+	<Home HREF="http://www.whizmoandgizmo.com/JerkQuest03/Report01.html"/>
+	
+	<Slide Src="Grain Elevator in Beach.jpg" LargeWidth="1024" LargeHeight="683">
+		<Title>Grain Elevator in Beach, North Dakota</Title>
+	</Slide>
+
+	<Slide Src="Grain Elevator In Plevna 3.jpg">
+		<Title>Grain Elevator in Plevna, Montana</Title>
+		<ImageCredit>Individual image credit</ImageCredit>
+	</Slide>
+
+	<Slide Src="Little House on Prarie S of Williston.jpg">
+		<Title>Abandoned Farmhouse Near Theodore Roosevelt National Park</Title>
+		<Desc>The landscape of western North Dakota is littered with structures like this.</Desc>
+	</Slide>
+
+	<Slide Src="Old Garage in Alexander.jpg">
+		<Title>Abandoned Garage in Alexander, North Dakota</Title>
+		<Desc>The painted circles add flair; perhaps they were part of the garage's logo.</Desc>
+	</Slide>
+
+	<Slide Src="Open Road Over Handlebars Near Beach.jpg">
+		<Title>Montana 7 North of Baker</Title>
+		<Desc>Most people drive about 80 mph; pickup trucks outnumber cars 4:1.</Desc>
+	</Slide>
+
+	<Slide Src="Roadside Stand in Plevna.jpg">
+		<Title>Abandoned gas station/store in Plevna, Montana</Title>
+	</Slide>
+
+	<Slide Src="Train Station in Beach.jpg" Width="452" Height="678">
+		<Title>Train Station in Beach, North Dakota</Title>
+		<Desc>The trains are very active in this part of the country, but tend to haul great quantities of a single homogenous
+			cargo such as gas or grain.  One train we passed had over 100 grain cars - each car exactly the same.
+		</Desc>
+	</Slide>
+
+	<Slide Src="Truck Hauling Hay Nr Williston.jpg">
+		<Title>Wide-load Hay Hauling on US 85 South of Williston</Title>
+		<Desc>Wide-load trucks and heavy agricultural equipment are common on these roads;
+			one harvester we passed had to move into the ditch for every oncoming vehicle.
+		</Desc>
+	</Slide>
+
+	<Slide Src="Tornado Siren In Beach.jpg">
+		<Title>Tornado Siren in Beach, North Dakota</Title>
+		<Desc>It sounds a test every day at 12 noon; even a block away, the noise was ear-splitting.</Desc>
+	</Slide>
+	
+</Show>
