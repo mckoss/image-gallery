@@ -30,6 +30,9 @@ beforeEach(() => {
       queueMicrotask(() => this.dispatchEvent(new Event(fail ? 'error' : 'load')));
     },
   });
+  // jsdom plays no media; tests that care override these.
+  vi.spyOn(HTMLMediaElement.prototype, 'play').mockResolvedValue(undefined);
+  vi.spyOn(HTMLMediaElement.prototype, 'pause').mockImplementation(() => {});
   document.body.innerHTML = '<main id="gallery"></main>';
   root = document.getElementById('gallery')!;
 });
@@ -38,6 +41,7 @@ afterEach(() => {
   player?.destroy();
   player = undefined;
   vi.useRealTimers();
+  vi.restoreAllMocks();
 });
 
 async function mount(show: Show = whizmo(), start?: number): Promise<Player> {
@@ -59,9 +63,9 @@ describe('the page', () => {
     expect(root.querySelector<HTMLImageElement>('.ig-thumb img')!.src)
       .toBe('https://mckoss.com/image-gallery/shows/whizmo-jerkquest-03-day-1/Grain%20Elevator%20in%20Beach-T.jpg');
     expect(button('Home page').getAttribute('href')).toBe('http://www.whizmoandgizmo.com/JerkQuest03/Report01.html');
-    for (const label of ['Previous photo', 'Next photo', 'Play']) expect(button(label)).not.toBeNull();
-    expect(button('Sound on/off')).toBeNull();
+    for (const label of ['Previous photo', 'Next photo', 'Play', 'Sound on/off']) expect(button(label)).not.toBeNull();
     expect($('.ig-credits').textContent).toContain('Powered by The Image Gallery (2004)');
+    expect($('.ig-credits').textContent).toContain('Music: "Porch Swing Days - slower" Kevin MacLeod (incompetech.com)');
   });
 
   it('lays out a landscape show with the photo as big as the biggest', async () => {
@@ -196,10 +200,17 @@ describe('a soundtrack', () => {
     expect(sound.getAttribute('aria-pressed')).toBe('false');
   });
 
-  it('is off if the browser won\'t play it yet', async () => {
-    vi.spyOn(HTMLMediaElement.prototype, 'play').mockRejectedValue(new Error('NotAllowedError'));
+  it('if the browser won\'t play it yet, the show waits for Play, which starts both', async () => {
+    const play = vi.spyOn(HTMLMediaElement.prototype, 'play').mockRejectedValueOnce(new Error('NotAllowedError'))
+      .mockResolvedValue(undefined);
     vi.spyOn(HTMLMediaElement.prototype, 'pause').mockImplementation(() => {});
-    await mount({ ...whizmo(), soundtrack: { src: 'music.mp3', loop: true } });
+    const p = await mount({ ...whizmo(), soundtrack: { src: 'music.mp3', loop: true } });
+    await flush();
     expect(button('Sound on/off').getAttribute('aria-pressed')).toBe('false');
+    expect([p.gallery.playing, button('Play').getAttribute('aria-pressed')]).toEqual([false, 'false']);
+    button('Play').click();
+    expect([p.gallery.current, p.gallery.playing]).toEqual([1, true]);
+    expect(play).toHaveBeenCalledTimes(2);
+    expect(button('Sound on/off').getAttribute('aria-pressed')).toBe('true');
   });
 });

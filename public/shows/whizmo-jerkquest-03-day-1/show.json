@@ -10,6 +10,11 @@
   "autoPlay": true,
   "imageBase": "",
   "thumbBase": "",
+  "soundtrack": {
+    "src": "porch-swing-days-slower.mp3",
+    "loop": true,
+    "credit": "<a href=\"https://incompetech.com/music/royalty-free/music.html\">\"Porch Swing Days - slower\"</a> Kevin MacLeod (incompetech.com), licensed under <a href=\"https://creativecommons.org/licenses/by/4.0/\">Creative Commons: By Attribution 4.0</a>"
+  },
   "theme": {},
   "slides": [
     {

@@ -14,11 +14,20 @@ export const MIGRATIONS: Migration[] = [
     source: 'legacy/LATEST/sample.htm',
     dest: 'public/shows/whizmo-jerkquest-03-day-1',
     images: 'legacy/SampleSource',
-    edit: show => {
-      // Its soundtrack ("Ventura Highway", a commercial recording) isn't
-      // distributed here.
-      const { soundtrack: _, ...rest } = show;
-      return { ...rest, imageBase: '', thumbBase: '' };
-    },
+    edit: show => ({
+      ...show,
+      imageBase: '',
+      thumbBase: '',
+      // In 2004 this played "Ventura Highway" (America), a commercial
+      // recording that can't be distributed here. In its place, a Creative
+      // Commons track in the same easy acoustic spirit.
+      soundtrack: {
+        src: 'porch-swing-days-slower.mp3',
+        loop: true,
+        credit: '<a href="https://incompetech.com/music/royalty-free/music.html">"Porch Swing Days - slower"</a> '
+          + 'Kevin MacLeod (incompetech.com), licensed under '
+          + '<a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons: By Attribution 4.0</a>',
+      },
+    }),
   },
 ];

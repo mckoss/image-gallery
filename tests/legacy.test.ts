@@ -122,6 +122,7 @@ describe('the migrated galleries in public/shows', () => {
         expect(existsSync(join(m.dest, slide.src)), slide.src).toBe(true);
         expect(existsSync(join(m.dest, slide.thumb)), slide.thumb).toBe(true);
       }
+      if (show.soundtrack) expect(existsSync(join(m.dest, show.soundtrack.src)), show.soundtrack.src).toBe(true);
     });
   }
 });

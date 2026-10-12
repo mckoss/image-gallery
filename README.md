@@ -86,5 +86,10 @@ the Designer's local file paths are dropped.
 
 The code is MIT licensed (see [LICENSE](LICENSE)). The Whizmo and Gizmo
 photos and the Caravan thumbnails belong to their owners and aren't
-covered by the MIT license. The sample's soundtrack, a commercial
-recording, isn't included.
+covered by the MIT license.
+
+The 2004 sample played "Ventura Highway" by America, a commercial
+recording that isn't included. In its place, the Whizmo and Gizmo show
+plays "Porch Swing Days - slower" by Kevin MacLeod (incompetech.com),
+licensed under [Creative Commons: By Attribution 4.0](https://creativecommons.org/licenses/by/4.0/)
+(re-encoded at 128 kbps).

@@ -209,7 +209,7 @@ export class Player {
     this.el.desc.innerHTML = slide.desc ?? '';
     if (this.shown < 0) {
       this.root.querySelector('.ig')!.classList.add('ig-ready');
-      if (this.audio) this.setSound(true);
+      if (this.audio) this.setSound(true, true);
     }
     this.shown = index;
     this.schedule();
@@ -245,7 +245,10 @@ export class Player {
     }
   }
 
-  private setSound(on: boolean): void {
+  // Music on or off. `atLoad`: the try with the first photo, before any
+  // click; if the browser refuses, an auto-playing show waits for Play, so
+  // that one click starts the photos and the music together.
+  private setSound(on: boolean, atLoad = false): void {
     if (!this.audio) return;
     this.soundOn = on;
     const img = this.el.sound?.querySelector('img');
@@ -254,7 +257,13 @@ export class Player {
     if (on) {
       this.audio.volume = 1;
       // Browsers may refuse until the visitor has clicked; then it's off.
-      this.audio.play()?.catch(() => this.setSound(false));
+      this.audio.play()?.catch(() => {
+        this.setSound(false);
+        if (atLoad && this.gallery.playing) {
+          this.gallery.playing = false;
+          this.update();
+        }
+      });
     } else {
       this.audio.pause();
     }
