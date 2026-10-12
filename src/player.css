@@ -1,0 +1,88 @@
+/* The gallery page. Colors, fonts and sizes come from the show's theme, as
+   --ig-* properties set by the player (src/player.ts). */
+html, body { margin: 0; min-height: 100%; background: #3C3C3C; }
+
+.ig {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: var(--ig-margin);
+  display: flex; flex-direction: column; gap: var(--ig-margin);
+  background: var(--ig-background); color: var(--ig-text);
+  font-family: var(--ig-font), sans-serif; font-size: var(--ig-font-size); line-height: 1.4;
+}
+.ig *, .ig *::before, .ig *::after { box-sizing: border-box; }
+.ig a { color: inherit; }
+
+.ig-title { font-family: var(--ig-title-font), sans-serif; font-size: var(--ig-title-font-size); }
+
+/* Landscape shows: the caption and controls go under the photo, the caption
+   on the left. Portrait shows: beside the photo, on the right. */
+.ig-body { display: grid; gap: var(--ig-margin); align-items: start; justify-content: start; }
+.ig-portrait .ig-body { grid-template-columns: minmax(0, var(--ig-stage-width)) minmax(200px, 320px); }
+.ig-landscape .ig-body { grid-template-columns: minmax(0, var(--ig-stage-width)); }
+.ig-landscape .ig-side {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--ig-margin);
+}
+.ig-landscape .ig-caption { grid-row: span 2; }
+.ig-portrait .ig-side { display: flex; flex-direction: column; gap: var(--ig-margin); }
+
+/* The photo: two images, cross-fading. */
+.ig-stage { position: relative; width: 100%; aspect-ratio: var(--ig-stage-ratio); }
+.ig-photo {
+  position: absolute; inset: 0; margin: auto;
+  max-width: 100%; max-height: 100%; width: auto; height: auto;
+  border: var(--ig-border-width) solid var(--ig-border);
+  opacity: 0; transition: opacity 0.8s ease-in-out;
+}
+.ig-photo:not([src]) { display: none; }
+.ig-photo.ig-front { opacity: 1; }
+.ig-photo.ig-error { border-color: var(--ig-error); }
+
+.ig-slide-title { font-family: var(--ig-title-font), sans-serif; font-size: var(--ig-title-font-size); }
+.ig-date:empty { display: none; }
+.ig-desc { margin-top: 0.75em; }
+
+.ig-controls { display: flex; gap: 4px; justify-content: flex-end; }
+.ig-button {
+  display: inline-flex; padding: 0; border: 0; background: none; cursor: pointer;
+  width: 44px; height: 44px;
+}
+.ig-button img { width: 44px; height: 44px; display: block; }
+.ig-button:focus-visible, .ig-thumb:focus-visible { outline: 2px solid var(--ig-border); outline-offset: 2px; }
+
+/* Thumbnails: a near-square grid. Their border says whether the photo has
+   loaded (unloaded: none; loaded; showing; failed), as in 2004. */
+.ig-thumbs {
+  display: grid; gap: calc(var(--ig-margin) / 2); justify-content: end;
+  grid-template-columns: repeat(var(--ig-columns), max(var(--ig-thumb), 44px));
+}
+.ig-thumb {
+  padding: 0; cursor: pointer; background: none;
+  width: max(var(--ig-thumb), 44px); height: max(var(--ig-thumb), 44px);
+  border: var(--ig-border-width) solid transparent;
+}
+.ig-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ig-thumb[data-state="loaded"] { border-color: var(--ig-unselected); }
+.ig-thumb[data-state="error"] { border-color: var(--ig-error); }
+.ig-thumb.ig-selected { border-color: var(--ig-border); }
+.ig-thumb-missing img { visibility: hidden; }
+
+.ig-credits { font-size: 11px; opacity: 0.8; }
+
+/* "Loading..." until the first photo is in. */
+.ig-splash {
+  position: fixed; inset: 0; margin: auto; height: max-content; max-width: 80%;
+  text-align: center; font-family: var(--ig-title-font), sans-serif; font-size: var(--ig-title-font-size);
+}
+.ig:not(.ig-ready) > :not(.ig-splash) { visibility: hidden; }
+.ig-ready .ig-splash { display: none; }
+
+/* Narrow screens: everything in one column. */
+@media (max-width: 640px) {
+  .ig-portrait .ig-body, .ig-landscape .ig-body { grid-template-columns: minmax(0, 1fr); }
+  .ig-landscape .ig-side { grid-template-columns: minmax(0, 1fr); }
+  .ig-landscape .ig-caption { grid-row: auto; }
+  .ig-controls, .ig-thumbs { justify-content: start; }
+}
+
+.ig-failed { color: white; font-family: sans-serif; padding: 20px; }
