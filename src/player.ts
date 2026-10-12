@@ -41,6 +41,7 @@ export class Player {
   private timer: ReturnType<typeof setTimeout> | undefined;
   private readonly audio: HTMLAudioElement | undefined;
   private soundOn = false;
+  private muted = false;    // the visitor turned the music off
   private readonly el: Record<string, HTMLElement> = {};
   private readonly onKey = (e: KeyboardEvent) => this.key(e);
 
@@ -123,8 +124,11 @@ export class Player {
     });
     this.el.prev.addEventListener('click', () => this.act(() => this.gallery.step(-1)));
     this.el.next.addEventListener('click', () => this.act(() => this.gallery.step(1)));
-    this.el.play.addEventListener('click', () => this.act(() => this.gallery.togglePlay()));
-    this.el.sound?.addEventListener('click', () => this.setSound(!this.soundOn));
+    this.el.play.addEventListener('click', () => this.togglePlay());
+    this.el.sound?.addEventListener('click', () => {
+      this.muted = this.soundOn;
+      this.setSound(!this.soundOn);
+    });
     for (const [part, up, down] of [['home', homeUp, homeDown], ['prev', prevUp, prevDown],
       ['next', nextUp, nextDown]] as const) {
       const img = this.el[part]?.querySelector('img');
@@ -145,9 +149,16 @@ export class Player {
     if (e.altKey || e.ctrlKey || e.metaKey || (e.target as Element)?.closest?.('input, textarea')) return;
     if (e.key === 'ArrowLeft') this.act(() => this.gallery.step(-1));
     else if (e.key === 'ArrowRight') this.act(() => this.gallery.step(1));
-    else if (e.key === ' ' && !(e.target as Element)?.closest?.('button, a')) this.act(() => this.gallery.togglePlay());
+    else if (e.key === ' ' && !(e.target as Element)?.closest?.('button, a')) this.togglePlay();
     else return;
     e.preventDefault();
+  }
+
+  // Play (or space). Starting the show starts the music too: browsers only
+  // let a page play sound after a click, so this is when it can begin.
+  private togglePlay(): void {
+    this.act(() => this.gallery.togglePlay());
+    if (this.gallery.playing && !this.soundOn && !this.muted) this.setSound(true);
   }
 
   private act(change: () => void): void {

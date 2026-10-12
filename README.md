@@ -45,6 +45,8 @@ npm run migrate   # convert the legacy galleries to show.json again
 default is the Whizmo and Gizmo one). `?image=3` starts on the third photo.
 
 Keys: ← and → step through the photos, space starts and stops the show.
+If the show has a soundtrack, Play starts it too: browsers only play sound
+after a click. The Sound button turns it off (and Play leaves it off).
 
 ## The gallery format: `show.json`
 

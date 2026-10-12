@@ -177,6 +177,25 @@ describe('a soundtrack', () => {
     expect(sound.getAttribute('aria-pressed')).toBe('false');
   });
 
+  it('starts when Play is clicked, unless the visitor turned it off', async () => {
+    const play = vi.spyOn(HTMLMediaElement.prototype, 'play').mockRejectedValueOnce(new Error('NotAllowedError'))
+      .mockResolvedValue(undefined);
+    vi.spyOn(HTMLMediaElement.prototype, 'pause').mockImplementation(() => {});
+    const p = await mount({ ...whizmo(), autoPlay: false, soundtrack: { src: 'music.mp3', loop: true } });
+    await flush();
+    const sound = button('Sound on/off');
+    expect(sound.getAttribute('aria-pressed')).toBe('false');   // the browser said no
+    button('Play').click();
+    expect(p.gallery.playing).toBe(true);
+    expect(play).toHaveBeenCalledTimes(2);
+    expect(sound.getAttribute('aria-pressed')).toBe('true');
+    sound.click();                                              // the visitor turns it off
+    button('Play').click();                                     // stop
+    button('Play').click();                                     // and play again
+    expect(play).toHaveBeenCalledTimes(2);
+    expect(sound.getAttribute('aria-pressed')).toBe('false');
+  });
+
   it('is off if the browser won\'t play it yet', async () => {
     vi.spyOn(HTMLMediaElement.prototype, 'play').mockRejectedValue(new Error('NotAllowedError'));
     vi.spyOn(HTMLMediaElement.prototype, 'pause').mockImplementation(() => {});
