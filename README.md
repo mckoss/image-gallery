@@ -13,8 +13,8 @@ browsers, and later to a Svelte and TypeScript app.
 - **2004.** Mike Koss, Mark Jennings and Darrell Plank built The Image
   Gallery as CodeRats.com, kept in CVS on coderats.com. A gallery was one
   HTML file holding its photos' list as an `<XML>` "data island"; copy the
-  file, edit the list, and drop the folder on a web server. The Windows
-  **Designer** (`PhotoAlbum.exe`) picked the photos, cropped them, chose
+  file, edit the list, and drop the folder on a web server. A Windows
+  **Designer** app (not kept here) picked the photos, cropped them, chose
   each thumbnail's rectangle, and wrote the folder for you. Versions: the
   Designer in March and April, version 1.0 in September, and the last
   player in November.
@@ -30,6 +30,8 @@ browsers, and later to a Svelte and TypeScript app.
   unchanged; the gallery format is now JSON, and the player is TypeScript.
 
 ## Using it
+
+Node 24 LTS (see `.nvmrc`).
 
 ```sh
 npm install
