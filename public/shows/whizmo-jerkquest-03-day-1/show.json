@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "title": "<a href=\"http://www.whizmoandgizmo.com\">Whizmo and Gizmo</a> - <i>JerkQuest '03 Tour</i> - Pictures from Day 1",
+  "home": "http://www.whizmoandgizmo.com/JerkQuest03/Report01.html",
+  "size": {
+    "width": 678,
+    "height": 452
+  },
+  "delay": 15,
+  "autoPlay": true,
+  "imageBase": "",
+  "thumbBase": "",
+  "theme": {},
+  "slides": [
+    {
+      "src": "Grain Elevator in Beach.jpg",
+      "thumb": "Grain Elevator in Beach-T.jpg",
+      "title": "Grain Elevator in Beach, North Dakota"
+    },
+    {
+      "src": "Grain Elevator In Plevna 3.jpg",
+      "thumb": "Grain Elevator In Plevna 3-T.jpg",
+      "title": "Grain Elevator in Plevna, Montana"
+    },
+    {
+      "src": "Little House on Prarie S of Williston.jpg",
+      "thumb": "Little House on Prarie S of Williston-T.jpg",
+      "title": "Abandoned Farmhouse Near Theodore Roosevelt National Park",
+      "desc": "The landscape of western North Dakota is littered with structures like this."
+    },
+    {
+      "src": "Old Garage in Alexander.jpg",
+      "thumb": "Old Garage in Alexander-T.jpg",
+      "title": "Abandoned Garage in Alexander, North Dakota",
+      "desc": "The painted circles add flair; perhaps they were part of the garage's logo."
+    },
+    {
+      "src": "Open Road Over Handlebars Near Beach.jpg",
+      "thumb": "Open Road Over Handlebars Near Beach-T.jpg",
+      "title": "Montana 7 North of Baker",
+      "desc": "Most people drive about 80 mph; pickup trucks outnumber cars 4:1."
+    },
+    {
+      "src": "Roadside Stand in Plevna.jpg",
+      "thumb": "Roadside Stand in Plevna-T.jpg",
+      "title": "Abandoned gas station/store in Plevna, Montana"
+    },
+    {
+      "src": "Train Station in Beach.jpg",
+      "thumb": "Train Station in Beach-T.jpg",
+      "title": "Train Station in Beach, North Dakota",
+      "desc": "The trains are very active in this part of the country, but tend to haul great quantities of a single homogenous cargo such as gas or grain. One train we passed had over 100 grain cars - each car exactly the same."
+    },
+    {
+      "src": "Truck Hauling Hay Nr Williston.jpg",
+      "thumb": "Truck Hauling Hay Nr Williston-T.jpg",
+      "title": "Wide-load Hay Hauling on US 85 South of Williston",
+      "desc": "Wide-load trucks and heavy agricultural equipment are common on these roads; one harvester we passed had to move into the ditch for every oncoming vehicle."
+    },
+    {
+      "src": "Tornado Siren In Beach.jpg",
+      "thumb": "Tornado Siren In Beach-T.jpg",
+      "title": "Tornado Siren in Beach, North Dakota",
+      "desc": "It sounds a test every day at 12 noon; even a block away, the noise was ear-splitting."
+    }
+  ]
+}
