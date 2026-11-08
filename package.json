@@ -1,6 +1,6 @@
 {
   "name": "image-gallery",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "The Image Gallery (2004): a photo slideshow with cropped thumbnails, captions and a soundtrack, ported to modern browsers.",
   "license": "MIT",
